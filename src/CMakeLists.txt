@@ -1,6 +1,11 @@
 cmake_minimum_required(VERSION 3.20.0)
 project(BioCro CXX)
 
+message(VERBOSE "Processing biocro-lib/src/CMakeLists.txt")
+if(MESSAGE_LOG_LEVEL IN_LIST LOG_LEVELS_FOR_INDENTATION)
+  list(APPEND CMAKE_MESSAGE_INDENT "  ")
+endif()
+
 set(CMAKE_CXX_STANDARD 11)
 set(SKIP_BUILD_RPATH TRUE)
 set(BUILD_WITH_INSTALL_NAME_DIR TRUE)
@@ -8,7 +13,10 @@ set(INSTALL_NAME_DIR "/Users/srohde/Documents/GitHub/gsrohde/public/DAWN/biocro-
 
 add_library(BioCro SHARED)
 
-#target_compile_options(BioCro PRIVATE -H)
+target_precompile_headers(BioCro PRIVATE
+    "framework/ode_solver_library/boost_ode_solvers.h"
+    "framework/ode_solver.h"
+)
 
 target_include_directories(BioCro PUBLIC "../inc")
 
