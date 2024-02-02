@@ -3,7 +3,7 @@ project(BioCro CXX)
 
 message(VERBOSE "Processing biocro-lib/src/CMakeLists.txt")
 if(MESSAGE_LOG_LEVEL IN_LIST LOG_LEVELS_FOR_INDENTATION)
-  list(APPEND CMAKE_MESSAGE_INDENT "  ")
+  list(APPEND CMAKE_MESSAGE_INDENT "  ")
 endif()
 
 set(CMAKE_CXX_STANDARD 11)
@@ -11,7 +11,7 @@ set(SKIP_BUILD_RPATH TRUE)
 set(BUILD_WITH_INSTALL_NAME_DIR TRUE)
 set(INSTALL_NAME_DIR "/Users/srohde/Documents/GitHub/gsrohde/public/DAWN/biocro-lib/src/build/")
 
-add_library(BioCro SHARED)
+add_library(BioCro)
 
 target_precompile_headers(BioCro PRIVATE
     "framework/ode_solver_library/boost_ode_solvers.h"
@@ -50,3 +50,22 @@ target_sources(BioCro PRIVATE ./module_library/c3photo.cpp)
 target_sources(BioCro PRIVATE ./module_library/c3EvapoTrans.cpp)
 target_sources(BioCro PRIVATE ./module_library/rasmussen_specific_heat.cpp)
 target_sources(BioCro PRIVATE ./module_library/c3_leaf_photosynthesis.cpp)
+
+target_sources(BioCro INTERFACE
+                 FILE_SET biocro_lib_headers
+                   TYPE HEADERS
+                   FILES framework/state_map.h
+                         framework/biocro_simulation.h
+                         framework/constants.h
+                         framework/dynamical_system.h
+                         framework/dynamical_system_helper_functions.h
+                         framework/module.h
+                         framework/module_creator.h
+                         framework/module_factory.h
+                         framework/module_helper_functions.h
+                         framework/ode_solver.h
+                         framework/ode_solver_library/ode_solver_factory.h
+                         framework/state_map.h
+                         framework/validate_dynamical_system.h
+                         module_library/module_library.h
+)
