@@ -75,7 +75,12 @@ Boost library code (the --exclude-from option is not needed here):
 
 If there are new files, `git add` them.
 
-9. Review the staged changes by running
+9. If any C++ source files were added or deleted, adjust the set of
+files designated by a `target_sources` command in the CMake list file
+as source files for the `BioCro` target; then `git add` the revised
+`CMakeLists.txt` file.
+
+10. Review the staged changes by running
 
     git status
 
@@ -84,17 +89,17 @@ running `git add` interactively:
 
     git add -i
 
-10. Once the correct set of files have been staged, commit them with
+11. Once the correct set of files have been staged, commit them with
 
     git commit
 
 The commit message should mention the release version of the BioCro
 repository being emulated (and possibly the commit hash as well).
 
-11. Switch to the master branch of this repository and merge in the
+12. Switch to the master branch of this repository and merge in the
 branch changes.
 
-12. Tag the new HEAD of the master branch with a new release number.
+13. Tag the new HEAD of the master branch with a new release number.
 
 
 
