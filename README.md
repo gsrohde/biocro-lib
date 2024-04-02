@@ -1,10 +1,10 @@
 # About this repository
 
-This repository is a stripped-down version of the _BioCro_ repository
-located at https://github.com/biocro/biocro together with its
+This repository is a stripped-down version of the _BioCro_ repository,
+located at https://github.com/biocro/biocro, together with its
 `framework` submodule, located at https://github.com/biocro/framework.
 It contains the bulk of the C++ code located in the BioCro
-repository's `src` and `inc` subdirectories but it leaves out most of
+repository's `src` and `inc` subdirectories, but it leaves out most of
 the R-related files.  It also leaves out the `Makevars` and
 `Makevars.win` files; instead, it contains a CMake list file for
 building the BioCro C++ library using CMake.
@@ -16,40 +16,54 @@ having to download the complete BioCro R source package.
 ## Updating this repository to track changes made to the BioCro GitHub repository
 
 Here we outline a procedure for updating this repository to
-incorporate the latest changes from the BioCro repository.
+incorporate the latest changes from the BioCro repository.  There are
+two main steps: updating the C++ code and updating the version
+information.
 
-1. Check out the latest version of this repository or pull the latest
-changes if already checked out.
+### Steps for updating the C++ code
+
+1. Check out the latest version of the _master_ branch of this
+repository, or pull the latest changes if already checked out.
 
 2. Be sure the working copy is a clean copy with no uncommitted
 changes or untracked files.  You can check that the copy is clean by
 running
 
-        git clean -nd
+        git status
 
-    in the top-level directory.  If this shows no changes you want
-    keep, you can run
+    in the top-level directory.  If this shows changes but none you
+    want keep, you can run
 
         git clean -fd
 
-    to set the working copy to a clean state.  Otherwise, you can
-    stash the changes and the untracked files with
+    to remove any untracked files, and
+
+        git reset --hard
+
+    to remove any uncommitted changes to tracked files.  Otherwise,
+    you can stash the untracked files and any changes to tracked files
+    with
 
         git stash -u
 
+    The working copy will now be in a clean state.
+
 3. *Recommended:* Make and switch to a branch of this repository for
-the purpose of incorporating the latest changes.
+the purpose of incorporating the latest changes.  Call it something
+like `vX.Y.Z-updates`, where `X.Y.Z` is the version number of the
+BioCro R package release upon which we are basing the updated version
+of this repository.  Usually, this will be the latest BioCro release.
 
 4. Clone the BioCro repository with
 
         git clone --recurse-submodules git@github.com:biocro/biocro.git
 
-    To make the exposition simpler, we will assume in what follows
+    To make the exposition in what follows simpler, we will assume
     that the BioCro repository and this repository are checked out
     into sibling directories having the same parent directory.  We
-    also assume the default branch just checked out is the corresponds
-    to the BioCro release upon which we want to base the updated
-    version of `biocro-lib`.
+    also assume the default branch just checked out corresponds to the
+    BioCro release upon which we want to base the updated version of
+    `biocro-lib`.
 
 5. Switch into the `biocro-lib` top-level directory.
 
@@ -83,8 +97,8 @@ as source files for the `BioCro` target; then `git add` the revised
 
         git status
 
-If adjustments to the index are required, an easy way to do this is by
-running `git add` interactively:
+    If adjustments to the index are required, an easy way to do this
+    is by running `git add` interactively:
 
         git add -i
 
