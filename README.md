@@ -29,13 +29,13 @@ repository, or pull the latest changes if already checked out.
 changes or untracked files.  You can check that the copy is clean by
 running
 
-        git status
+        git status --ignored
 
     in one of the working-copy directories.  If this shows changes you
     want keep, you can stash the untracked files and any changes to
     tracked files by running
 
-        git stash -u
+        git stash --all
 
     Otherwise, you can run
 
@@ -72,29 +72,32 @@ upon which one wants to base the updated version of `biocro-lib`.
 
 * Run rsync to copy changed files from the BioCro repository using
 
-        rsync -aiv --exclude-from=biocro_files_to_ignore --delete ../biocro/src .
+        rsync -aiv --exclude-from=biocro_src_files_to_ignore --delete ../biocro/src .
 
     This will copy any new files from the BioCro repository's `src`
     directory and update existing files except those listed in the
-    `biocro_files_to_ignore` exclusion list.  It will also remove any
-    files in the current repository's `src` directory that are no
+    `biocro_src_files_to_ignore` exclusion list.  It will also remove
+    any files in the current repository's `src` directory that are no
     longer in the BioCro repository's `src` directory.
 
 * Repeat this procedure with the `inc` directory, which contains the
-Boost library code (the `--exclude-from` option is not needed here):
+Boost library code.  Here we use the exclusion file
+biocro_inc_files_to_ignore:
 
-        rsync -aiv --delete ../biocro/inc .
+        rsync -aiv --exclude-from=biocro_inc_files_to_ignore --delete ../biocro/inc .
 
-### Updates to `biocro_files_to_ignore`
+### Updates to `biocro_src_files_to_ignore` and `biocro_inc_files_to_ignore`
 
 In the rare case that a file is added under the BioCro R project `src`
-directory that _shouldn't_ be added to this repository, it may be
-necessary to make addtions to the `biocro_files_to_ignore` file used
-in the rsync command above.
+or `inc` directory that _shouldn't_ be added to this repository, it
+may be necessary to make additions to the `biocro_src_files_to_ignore`
+or the `biocro_inc_files_to_ignore` file used in the rsync commands
+above.
 
-Similarly, if a file listed in `biocro_files_to_ignore` is removed
-from the BioCro repository, that file name may also be removed from
-`biocro_files_to_ignore`.
+Similarly, if a file listed in `biocro_src_files_to_ignore` or
+`biocro_inc_files_to_ignore` is removed from the BioCro repository,
+that file name may also be removed from `biocro_src_files_to_ignore`
+or `biocro_inc_files_to_ignore`.
 
 ### Updates for CMake
 

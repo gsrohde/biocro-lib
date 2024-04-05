@@ -1,5 +1,16 @@
 cmake_minimum_required(VERSION 3.20.0)
-project(BioCro CXX)
+
+project(
+    BioCro
+
+    # The first three numbers of the version here correspond to the
+    # version of the BioCro R package on which the C++ is based.  A
+    # fourth (tweak) digit may be used if multiple versions of
+    # biocro-lib are based on the same R package version.
+    VERSION 3.1.0
+
+    LANGUAGES CXX
+)
 
 message(VERBOSE "Processing biocro-lib/src/CMakeLists.txt")
 if(MESSAGE_LOG_LEVEL IN_LIST LOG_LEVELS_FOR_INDENTATION)
