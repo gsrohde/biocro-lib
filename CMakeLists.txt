@@ -105,7 +105,7 @@ target_sources(BioCro PRIVATE src/module_library/ball_berry_gs.cpp)
 target_sources(BioCro PRIVATE src/module_library/c3_leaf_photosynthesis.cpp)
 
 target_sources(BioCro INTERFACE
-                 FILE_SET biocro_lib_headers
+                 FILE_SET biocro_lib_headers # FILE_SET requires CMake >= 3.23
                    TYPE HEADERS
                    FILES src/framework/state_map.h
                          src/framework/biocro_simulation.h
