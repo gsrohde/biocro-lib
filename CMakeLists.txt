@@ -1,4 +1,8 @@
 cmake_minimum_required(VERSION 3.28.0)
+list(APPEND CMAKE_MESSAGE_CONTEXT biocro-lib)
+
+include(context)
+show_context("biocro-lib/CMakeLists.txt")
 
 project(
     BioCro
@@ -11,11 +15,6 @@ project(
 
     LANGUAGES CXX
 )
-
-message(VERBOSE "Processing biocro-lib/src/CMakeLists.txt")
-if(MESSAGE_LOG_LEVEL IN_LIST LOG_LEVELS_FOR_INDENTATION)
-  list(APPEND CMAKE_MESSAGE_INDENT "  ")
-endif()
 
 
 ## Set the language standard flexibly, as outlined in Craig Scott's
