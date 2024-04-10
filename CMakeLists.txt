@@ -11,7 +11,7 @@ project(
     # version of the BioCro R package on which the C++ is based.  A
     # fourth (tweak) digit may be used if multiple versions of
     # biocro-lib are based on the same R package version.
-    VERSION 3.1.0
+    VERSION 3.1.0.1
 
     LANGUAGES CXX
 )
