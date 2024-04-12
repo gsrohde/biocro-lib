@@ -1,6 +1,9 @@
 #ifndef ODE_SOLVER_H
 #define ODE_SOLVER_H
 
+/* Generated file to control symbol visibility */
+#include "biocro_export.h"
+
 #include <vector>
 #include <boost/numeric/odeint.hpp>  // For use with ODEINT
 #include "state_map.h"
@@ -9,7 +12,7 @@
 // An abstract class for a generic numerical ODE solver. Its `integrate()`
 // function provides a uniform interface for all derived ODE solvers, and its
 // constructor requires inputs that are common to all ODE solvers.
-class ode_solver
+class BIOCRO_EXPORT ode_solver
 {
    public:
     ode_solver(

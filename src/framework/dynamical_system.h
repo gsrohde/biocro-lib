@@ -1,6 +1,9 @@
 #ifndef DYNAMICAL_SYSTEM_H
 #define DYNAMICAL_SYSTEM_H
 
+/* Generated file to control symbol visibility */
+#include "biocro_export.h"
+
 #include <vector>
 #include <string>
 #include <stdexcept>         // for std::logic_error
@@ -138,7 +141,7 @@ using std::vector;
  *  methods, this procedure can be performed using the `get_results_from_system`
  *  free function.
  */
-class dynamical_system
+class BIOCRO_EXPORT dynamical_system
 {
    public:
     dynamical_system(

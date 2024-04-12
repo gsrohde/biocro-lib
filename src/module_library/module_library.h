@@ -1,6 +1,9 @@
 #ifndef STANDARDBML_H
 #define STANDARDBML_H
 
+/* Generated file to control symbol visibility */
+#include "biocro_export.h"
+
 #include "../framework/module_creator.h"  // for module_creator and creator_map
 
 // When creating a new module library R package, it will be necessary to modify
@@ -16,7 +19,7 @@
  */
 namespace standardBML
 {
-class module_library
+class BIOCRO_EXPORT module_library
 {
    public:
     static creator_map library_entries;

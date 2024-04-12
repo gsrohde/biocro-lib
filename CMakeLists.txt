@@ -1,8 +1,9 @@
 cmake_minimum_required(VERSION 3.28.0)
 list(APPEND CMAKE_MESSAGE_CONTEXT biocro-lib)
+set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
-include(context)
-show_context("biocro-lib/CMakeLists.txt")
+#include(context)
+#show_context("biocro-lib/CMakeLists.txt")
 
 project(
     BioCro
@@ -59,6 +60,15 @@ endif ()
 
 # use build type in library definition
 add_library(BioCro ${BIOCROLIB_BUILD_TYPE})
+
+include(GenerateExportHeader)
+generate_export_header(BioCro)
+target_sources(BioCro
+    PUBLIC
+        FILE_SET HEADERS
+        BASE_DIRS ${CMAKE_CURRENT_BINARY_DIR}
+        FILES ${CMAKE_CURRENT_BINARY_DIR}/biocro_export.h
+)
 
 target_precompile_headers(BioCro PRIVATE
     "src/framework/ode_solver_library/boost_ode_solvers.h"
@@ -120,5 +130,6 @@ target_sources(BioCro INTERFACE
                          src/framework/state_map.h
                          src/framework/validate_dynamical_system.h
                          src/module_library/module_library.h
-                    BASE_DIRS src
+                         ${CMAKE_CURRENT_BINARY_DIR}/biocro_export.h
+                    BASE_DIRS src ${CMAKE_CURRENT_BINARY_DIR}
 )

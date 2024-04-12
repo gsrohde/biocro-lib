@@ -1,13 +1,16 @@
 #ifndef ODE_SOLVER_FACTORY_H
 #define ODE_SOLVER_FACTORY_H
 
+/* Generated file to control symbol visibility */
+#include "biocro_export.h"
+
 #include <string>
 #include <vector>
 #include <map>
 #include "../ode_solver.h"
 #include "../state_map.h"  // for string_vector
 
-class ode_solver_factory
+class BIOCRO_EXPORT ode_solver_factory
 {
    public:
     static ode_solver* create(
